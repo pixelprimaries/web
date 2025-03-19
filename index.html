@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Primaries</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        /* Define custom fonts */
+        @font-face {
+            font-family: 'Born2bSportyFS';
+            src: url('fonts/Born2bSportyFS.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'FunnelSans';
+            src: url('fonts/FunnelSans-VariableFont_wght.ttf') format('truetype');
+        }
+
         /* General Reset */
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #FFFFFF; /* Dark background for contrast */
-            color: #fff;
+            font-family: 'FunnelSans', Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #1c1c1c;
         }
 
         /* Header Styling */
         header {
             width: 100%;
-            background-color: #1c1c1c; /* Dark grey banner */
-            padding: 20px 0; /* Increased padding for a bigger banner */
+            background-color: #1c1c1c;
+            padding: 20px 0;
             position: fixed;
             top: 0;
             left: 0;
@@ -31,146 +41,135 @@
 
         /* Pixelized Title Styling */
         .pixel-title {
-            font-size: 50px; /* Larger font size */
+            font-size: 50px;
             font-family: 'Born2bSportyFS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');
-            color: #FFFFFF; /* White text */
-            margin-left: 20px; /* Offset from the left edge */
-            transition: transform 0.2s ease-in-out; /* Smooth hover effect */
-            display: inline-block; /* Prevent unwanted width */
+            color: #FFFFFF;
+            margin-left: 20px;
+            transition: transform 0.2s ease-in-out;
+            display: inline-block;
         }
 
         /* Navigation Menu Styling */
         .nav-menu {
             display: flex;
             gap: 20px;
-            margin-right: 20px; /* Offset from the right edge */
+            margin-right: 20px;
         }
 
         .nav-item {
-            font-size: 25px; /* Larger font size */
-            font-family: 'Born2bSporty FS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');		
+            font-size: 25px;
+            font-family: 'Born2bSportyFS', cursive;
             color: #FFFFFF;
             text-decoration: none;
-            text-transform: uppercase; /* Uppercase text */
-            transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+            text-transform: uppercase;
+            transition: transform 0.2s ease-in-out;
         }
 
         .nav-item:hover {
-            transform: scale(1.05); /* Subtle size increase from the center */
+            transform: scale(1.05);
         }
 
         /* Map Image Styling */
         .map-container {
-            margin-top: 120px; /* Space below the fixed header */
-            text-align: left; /* Align image to the left */
-            padding-left: 250px; /* Add some left padding */
+            margin-top: 120px;
+            text-align: left;
+            padding-left: 250px;
             display: flex;
             align-items: flex-start;
-            flex-wrap: wrap; /* Adjust layout on smaller screens */
+            flex-wrap: wrap;
         }
 
         .map-container img {
-            max-width: 35%; /* Smaller size */
-            height: auto; /* Maintain aspect ratio */
+            max-width: 35%;
+            height: auto;
         }
 
         .map-text {
-            margin-left: 15px; /* Spacing from the map */
+            margin-left: 15px;
             margin-top: -100px;
-            font-family: 'Born2bSporty FS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');
-            color: #1c1c1c; /* White text */
-            text-transform: uppercase; /* Uppercase text */
+            font-family: 'Born2bSportyFS', cursive;
+            color: #1c1c1c;
+            text-transform: uppercase;
         }
 
         .map-text .state-name {
-            font-size: 150px; /* Large font for ILLINOIS */
+            font-size: 150px;
             margin-bottom: -100px;
         }
 
         .map-text .state-tagline {
-            font-size: 68px; /* Smaller font for THE LINCOLN STATE */
+            font-size: 68px;
             margin-bottom: 30px;
-	    color: #7a7a7a:
+            color: #7a7a7a;
         }
 
         .zipcode-form {
             margin-top: 15px;
-            width: 98%; /* Ensure form container adjusts */
-            display: flex; /* Flexbox for horizontal layout */
-            align-items: center; /* Align items vertically */
-            gap: 0px; /* Space between input and button */
+            width: 98%;
+            display: flex;
+            align-items: center;
         }
 
         .zipcode-form input[type="text"] {
-            font-family: 'Born2bSporty FS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');
-            padding: 10px; /* Larger padding for bigger input */
-            font-size: 16px; /* Larger font size */
+            font-family: 'Born2bSportyFS', cursive;
+            padding: 10px;
+            font-size: 16px;
             border: 2px solid #1c1c1c;
             background-color: #FFFFFF;
             color: #1c1c1c;
-            text-transform: uppercase; /* Uppercase text */
-            flex: 1; /* Make input take remaining space */
+            text-transform: uppercase;
+            flex: 1;
         }
 
         .zipcode-form button {
-            font-family: 'Born2bSporty FS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');
-            padding: 10px 20px; /* Larger button */
-            font-size: 16px; /* Larger font size */
+            font-family: 'Born2bSportyFS', cursive;
+            padding: 10px 20px;
+            font-size: 16px;
             border: 2px solid #1c1c1c;
             background-color: #1c1c1c;
             color: #FFFFFF;
-            text-transform: uppercase; /* Uppercase text */
+            text-transform: uppercase;
             cursor: pointer;
-            flex-shrink: 0; /* Prevent button from shrinking */
         }
 
         .zipcode-form button:hover {
             background-color: #CCCCCC;
         }
 
-        /* Error Message Styling */
         #error-message {
             color: #595959;
             font-size: 16px;
             margin-top: 10px;
-            display: none; /* Initially hidden */
-	    text-align: center;
-            font-family: 'Born2bSporty FS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');
+            display: none;
+            text-align: center;
+            font-family: 'Born2bSportyFS', cursive;
         }
 
-        /* District Finder Link */
         .district-link {
             margin-top: 10px;
             display: block;
             text-align: center;
             font-size: 16px;
-            color: #1c1c1c; /* Bright green for emphasis */
+            color: #1c1c1c;
             text-decoration: none;
-            font-family: 'Born2bSporty FS', cursive;
-	    src: url('Born2bSportyFS.otf') format('opentype');
+            font-family: 'Born2bSportyFS', cursive;
         }
 
         .district-link:hover {
             text-decoration: underline;
-            color: #c0c0c0; /* Slightly lighter green on hover */
+            color: #c0c0c0;
         }
 
         @media (max-width: 768px) {
             .map-container {
-                flex-direction: column; /* Stack map and text vertically */
-                padding-left: 20px; /* Reduce padding on smaller screens */
+                flex-direction: column;
+                padding-left: 20px;
             }
 
             .map-text {
-                margin-left: 0; /* Remove left margin */
+                margin-left: 0;
                 margin-top: 20px;
-                text-align: center; /* Center-align text */
+                text-align: center;
             }
         }
     </style>
@@ -191,7 +190,7 @@
             <p class="state-name">ILLINOIS</p>
             <p class="state-tagline">THE LINCOLN STATE</p>
             <form class="zipcode-form" onsubmit="handleSubmit(event)">
-                <input type="text" id="district" name="district" placeholder="ENTER CONGRESSIONAL DISTRICT NUMBER">
+                <input type="text" id="district" placeholder="ENTER CONGRESSIONAL DISTRICT NUMBER">
                 <button type="submit">Submit</button>
             </form>
             <p id="error-message">Please enter a valid district number between 1 and 17.</p>
@@ -200,14 +199,12 @@
     </div>
     <script>
         function handleSubmit(event) {
-            event.preventDefault(); // Prevent the form from refreshing the page
-            const district = document.getElementById('district').value;
-            const districtNumber = parseInt(district, 10);
+            event.preventDefault();
+            const districtNumber = parseInt(document.getElementById('district').value, 10);
             const errorMessage = document.getElementById('error-message');
 
             if (isNaN(districtNumber) || districtNumber < 1 || districtNumber > 17) {
                 errorMessage.style.display = 'block';
-                errorMessage.textContent = "Please enter a valid district number between 1 and 17.";
                 return;
             }
 
