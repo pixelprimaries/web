@@ -302,63 +302,82 @@
     </div>
 </div>
 <script>
-    // Function to open a popup window with a specified background color
-    function openPopup(imageUrl) {
-        const popupWidth = 580; // Width of the popup
-        const popupHeight = 525; // Height of the popup
-        const left = (window.innerWidth - popupWidth) / 2; // Center horizontally
-        const top = (window.innerHeight - popupHeight) / 2; // Center vertically
+	// Store open popups to track them
+	let openPopups = [];
 
-        // Open a new popup window
-        const popup = window.open(
-            '',
-            'CandidatePopup',
-            `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=no`
-        );
+	function openPopup(imageUrl) {
+		const popupWidth = 580;
+		const popupHeight = 525;
+		const left = (window.innerWidth - popupWidth) / 2 + (openPopups.length * 30); // Offset new popups slightly
+		const top = (window.innerHeight - popupHeight) / 2 + (openPopups.length * 30); 
 
-        // Set the popup's content with a custom background color and the image
-        const backgroundColor = '#FFFFFF'; // Desired background color for the popup
-        popup.document.write(`
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Stat Block</title>
-                <style>
-                    body {
-                        margin: 0;
-                        padding: 0;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        background-color: ${backgroundColor};
-                        height: 100vh;
-                    }
-                    img {
-                        max-width: 100%;
-                        max-height: 100%;
-                        display: block;
-                    }
-                </style>
-            </head>
-            <body>
-                <img src="${imageUrl}" alt="Stat Block">
-            </body>
-            </html>
-        `);
+		// Generate a unique name for each popup
+		const popupName = `CandidatePopup_${openPopups.length}`;
 
-        // Close the popup's document to finish loading
-        popup.document.close();
-    }
+		// Open a new popup window
+		const popup = window.open(
+			'',
+			popupName, // Unique name for each popup
+			`width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=no`
+		);
 
-    // Attach event listeners to all links with the 'popup-link' class
-    document.querySelectorAll('.popup-link').forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default link behavior
-            const url = this.dataset.url; // Get the URL from the data-url attribute
-            openPopup(url); // Call the popup function with the image URL
-        });
-    });
+		if (popup) {
+			// Set the popup's content
+			const backgroundColor = '#FFFFFF'; // Background color for the popup
+			popup.document.write(`
+				<!DOCTYPE html>
+				<html lang="en">
+				<head>
+					<meta charset="UTF-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Stat Block</title>
+					<style>
+						body {
+							margin: 0;
+							padding: 0;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							background-color: ${backgroundColor};
+							height: 100vh;
+						}
+						img {
+							max-width: 100%;
+							max-height: 100%;
+							display: block;
+						}
+					</style>
+				</head>
+				<body>
+					<img src="${imageUrl}" alt="Stat Block">
+				</body>
+				</html>
+			`);
+
+			popup.document.close(); // Finish loading
+			openPopups.push(popup); // Store reference to popup
+
+			// Set an interval to bring popups to the front every second
+			setInterval(() => {
+				openPopups.forEach(p => {
+					if (!p.closed) p.focus();
+				});
+			}, 1000); // Focus all open popups every second
+
+			// Remove closed popups from the array
+			popup.onbeforeunload = () => {
+				openPopups = openPopups.filter(p => p !== popup);
+			};
+		}
+	}
+
+	// Attach event listeners to all links with the 'popup-link' class
+	document.querySelectorAll('.popup-link').forEach(link => {
+		link.addEventListener('click', function(event) {
+			event.preventDefault(); // Prevent default link behavior
+			const url = this.dataset.url; // Get the URL from the data attribute
+			openPopup(url); // Call the popup function with the image URL
+		});
+	});
 </script>
 
