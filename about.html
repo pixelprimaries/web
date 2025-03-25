@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District #</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF; /* Light grey for overall background */
+            color: #fff; /* Dark text for readability */
+        }
+
+        /* Header Styling */
+        header {
+            width: 100%;
+            background-color: #1c1c1c; /* Dark grey banner */
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pixel-title {
+            font-size: 50px;
+            font-family: 'Born2bSporty FS', cursive;
+            color: #FFFFFF;
+            margin-left: 20px;
+            transition: transform 0.2s ease-in-out;
+            display: inline-block;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            margin-right: 20px;
+        }
+
+        .nav-item {
+            font-size: 25px;
+            font-family: 'Born2bSporty FS', cursive;
+            color: #FFFFFF;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .nav-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* District Info Section */
+        .district-info {
+            margin-top: 80px; /* Space below the fixed header */
+            margin-bottom: -35px; /* Space below the fixed header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
+            background-color: #FFFFFF; /* White background for contrast */
+            border-bottom: 2px solid #FFFFFF;
+        }
+
+        .district-info img {
+            max-width: 32%; /* District image size */
+            height: auto;
+	    margin-left: 55px;
+        }
+
+        .district-info .blurb {
+   	    margin-top: -50px;
+            max-width: 55%; /* Text section size */
+            margin-left: 20px;
+        }
+
+        .district-info .blurb h2 {
+            font-size: 60px;
+            font-family: 'Born2bSporty FS', cursive;
+            font-weight: normal; /* Set to normal to remove bold appearance */
+            margin-bottom: 10px;
+	    color: #1c1c1c;
+        }
+
+        .district-info .blurb p {
+            font-size: 13px;
+            line-height: 1.5;
+            font-family: Funnel Sans;
+	    color: #1c1c1c;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="pixel-title">PIXEL PRIMARIES</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="stat.html" class="nav-item">Stats</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="contact.html" class="nav-item">Contact</a>
+        </nav>
+    </header>
+
+    <!-- District Info Section -->
+    <div class="district-info">
+        <img src="about.jpg" alt="About">
+        <div class="blurb">
+            <h2>ABOUT</h2>
+            <p>
+                Pixel Primaries, created by Sid Shukla, is a project that distills Congressional Primary candidates and their values into pixelized sprites and stats. These pixel elements come in two forms: a web database for prospective voters and a card-based teaching tool for grade school students. Both aim to inform citizens about the candidates running for office, with the teaching tool providing extra resources which prompt students to analyze candidate statistics and perform mock debates. 
+<br><br>
+	The project was born from the reality that politics, in the eyes of many young Americans, is a tangled mess of corruption and immorality obfuscated by a cloud of complex jargon. In other words, it’s both unapproachable and undeserving of approach. Research reveals that young American political apathy often comes from the feeling that their actions don’t matter, or that the system is too big to wrap their heads around. The local nature of the Primaries thus made them the perfect focus. The Congressional Primaries occur every two years, deciding which candidates will represent their respective party in the General Election. The candidates running for the Primaries are often locals who see opportunities for change in their communities. However, the lack of voter focus on the Primaries often results in the incumbent career politicians retaking their seats year after year. By pixelizing every candidate onto an even playing field, Pixel Primaries gives a voice to newcomers and allows for voters to find the representatives that truly align with their policy positions.
+
+            </p>
+        </div>
+    </div>
+</div>
+<script>
