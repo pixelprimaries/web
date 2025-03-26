@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Pixel Primaries</title>
     <style>
         @font-face {
@@ -33,17 +33,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-direction: column;
         }
 
         .pixel-title {
             font-size: 36px;
             font-family: 'Born2bSportyFS', cursive;
             color: #FFFFFF;
+            margin-bottom: 10px;
         }
 
         .nav-menu {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-item {
@@ -58,7 +62,7 @@
         }
 
         .map-container {
-            margin-top: 100px;
+            margin-top: 140px;
             padding: 20px;
             display: flex;
             flex-direction: row;
@@ -101,7 +105,7 @@
             margin: 0 auto;
         }
 
-        .zipcode-form input[type="text"],
+        .zipcode-form input[type=\"text\"],
         .zipcode-form button {
             font-family: 'Born2bSportyFS', cursive;
             padding: 10px;
@@ -140,18 +144,29 @@
         }
 
         @media (min-width: 768px) {
+            header {
+                flex-direction: row;
+            }
+
+            .pixel-title {
+                margin-bottom: 0;
+            }
+
             .map-container {
                 flex-direction: row;
                 text-align: left;
             }
+
             .map-text {
                 text-align: left;
                 margin-left: 20px;
             }
+
             .zipcode-form {
                 flex-direction: row;
             }
-            .zipcode-form input[type="text"] {
+
+            .zipcode-form input[type=\"text\"] {
                 flex: 1;
             }
         }
@@ -159,26 +174,26 @@
 </head>
 <body>
     <header>
-        <div class="pixel-title">PIXEL PRIMARIES</div>
-        <nav class="nav-menu">
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="stat.html" class="nav-item">Stats</a>
-            <a href="about.html" class="nav-item">About</a>
-            <a href="contact.html" class="nav-item">Contact</a>
+        <div class=\"pixel-title\">PIXEL PRIMARIES</div>
+        <nav class=\"nav-menu\">
+            <a href=\"index.html\" class=\"nav-item\">Home</a>
+            <a href=\"stat.html\" class=\"nav-item\">Stats</a>
+            <a href=\"about.html\" class=\"nav-item\">About</a>
+            <a href=\"contact.html\" class=\"nav-item\">Contact</a>
         </nav>
     </header>
 
-    <div class="map-container">
-        <img src="illinois-maplight.png" alt="Map of Illinois">
-        <div class="map-text">
-            <p class="state-name">ILLINOIS</p>
-            <p class="state-tagline">THE LINCOLN STATE</p>
-            <form class="zipcode-form" onsubmit="handleSubmit(event)">
-                <input type="text" id="district" placeholder="ENTER DISTRICT NUMBER">
-                <button type="submit">Submit</button>
+    <div class=\"map-container\">
+        <img src=\"illinois-maplight.png\" alt=\"Map of Illinois\">
+        <div class=\"map-text\">
+            <p class=\"state-name\">ILLINOIS</p>
+            <p class=\"state-tagline\">THE LINCOLN STATE</p>
+            <form class=\"zipcode-form\" onsubmit=\"handleSubmit(event)\">
+                <input type=\"text\" id=\"district\" placeholder=\"ENTER DISTRICT NUMBER\">
+                <button type=\"submit\">Submit</button>
             </form>
-            <p id="error-message">Please enter a valid district number between 1 and 17.</p>
-            <a class="district-link" href="https://www.house.gov/representatives/find-your-representative" target="_blank">Find your district here</a>
+            <p id=\"error-message\">Please enter a valid district number between 1 and 17.</p>
+            <a class=\"district-link\" href=\"https://www.house.gov/representatives/find-your-representative\" target=\"_blank\">Find your district here</a>
         </div>
     </div>
 
