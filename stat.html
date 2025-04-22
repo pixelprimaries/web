@@ -67,6 +67,18 @@
         .nav-item:hover {
             transform: scale(1.05);
         }
+
+        .pdf-container {
+            margin-top: 120px; /* Space for the fixed header */
+            width: 100%;
+            height: 100vh; /* Take full viewport height */
+        }
+
+        .pdf-container embed {
+            width: 100%;
+            height: 100%;
+            border: none; /* Optional: removes default embed border */
+        }  
     </style>
 </head>
 <body>
@@ -80,9 +92,8 @@
             <a href="contact.html" class="nav-item">Contact</a>
         </nav>
     </header>
-
-    <embed src="statpage.pdf" width="1375" height="2800" 
-    type="application/pdf">
-
+<div class="pdf-container">
+    <embed src="statpage.pdf" type="application/pdf">
 </div>
+
 
